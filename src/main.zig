@@ -6,11 +6,6 @@ pub fn main() !void {
     var groupings: u8 = undefined;
     groupings = 2;
 
-    // //setup buffered writer
-    // const stdout_file = std.io.getStdOut().writer();
-    // var bw = std.io.bufferedWriter(stdout_file);
-    // const stdout = bw.writer();
-
     //allocator for command line arguments
     const alloc = std.heap.page_allocator;
     var args = try std.process.argsWithAllocator(alloc);
@@ -22,10 +17,10 @@ pub fn main() !void {
     while (args.next()) |arg| {
         try hexify(arg, 40);
     }
-    // try bw.flush();
 }
 
 fn hexify(filename: []const u8, col: u32) !void {
+
     //setup buffered writer
     const stdout_file = std.io.getStdOut().writer();
     var bw = std.io.bufferedWriter(stdout_file);
@@ -47,9 +42,3 @@ fn hexify(filename: []const u8, col: u32) !void {
     try stdout.print("\n", .{});
     try bw.flush();
 }
-
-// test "simple test" {
-//     var list = std.ArrayList(i32).init(std.testing.allocator);
-//     try list.append(42);
-//     try std.testing.expectEqual(@as(i32, 42), list.pop());
-// }
