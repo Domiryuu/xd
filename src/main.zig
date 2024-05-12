@@ -2,10 +2,6 @@ const std = @import("std");
 
 pub fn main() !void {
 
-    //default values
-    var groupings: u8 = undefined;
-    groupings = 2;
-
     //allocator for command line arguments
     const alloc = std.heap.page_allocator;
     var args = try std.process.argsWithAllocator(alloc);
